@@ -2,20 +2,22 @@
   "version": 2,
   "builds": [
     {
-      "src": "**/*.php",
+      "src": "index.php",
       "use": "vercel-php"
     },
     {
-      "src": "**/*.html",
-      "use": "@vercel/static"
+      "src": "views/*.php",
+      "use": "vercel-php"
     }
   ],
-  {
-  "functions": {
-    "api/**/*.php": { "runtime": "vercel-php@0.6.0" }
-  },
   "routes": [
-    { "src": "/(.*)", "dest": "/api/$1" }
+    {
+      "src": "/views/(.*)",
+      "dest": "/views/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.php"
+    }
   ]
 }
- 
